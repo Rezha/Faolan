@@ -1,0 +1,13 @@
+- done in Graphics2D (pure)
+
+- make opening menu. 
+  - appropriate theme music
+  - buttons and everything
+  - rectangles, basic textures.
+- make game engine.
+  - straight 2D. Forget about isometric for now.
+  - stuff like sprite compatability, moving, which tiles can be moved on, etc.
+- write script outline draft
+  - spend time on this
+- ... find / make textures...
+  - remember, it's okay if it's pixely, cuz who cares and you can get better textures later

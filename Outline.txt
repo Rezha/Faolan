@@ -5,9 +5,48 @@
   - buttons and everything
   - rectangles, basic textures.
 - make game engine.
-  - straight 2D. Forget about isometric for now.
+  - straight 2D. Forget about isometric for now. (possible later addition)
   - stuff like sprite compatability, moving, which tiles can be moved on, etc.
 - write script outline draft
   - spend time on this
 - ... find / make textures...
   - remember, it's okay if it's pixely, cuz who cares and you can get better textures later
+
+- somehow find sounds. Perhaps just take from a ftp game already made for now?
+
+- plan to keep this in java. If it gets big in java already, transitioning to C++ or python later is 
+probably not going to be feasible. 
+Probably.
+Not without help.
+
+
+
+Plot:
+
+You wake up in an abandoned farmhouse. You have no idea about your past.
+Through interactions with some people you find traveling in the forest (kids? idk) you deduce you are a 
+major criminal (originally the idea was serial killer but i guess that's too graphic) but now with
+amnesia so you have no idea about anything right now. 
+
+You play the game, living the life that you are now shown how to live, slowly building relationships with 
+townspeople etc. (emphasis on the interactions you need to do, how your actions affect things deeply).
+
+You can also slowly remember your memories in specific situations; slowly however, you soon realize that 
+there are periods of time which you just don't remember, and bad things seem to happen in these times. 
+You might lose control of your character at times, saying things that you didn't want to say, for example, 
+but you will also gain skills. 
+There is a way to regain control, but it probably revolves around boringish tasks (that will have shortcuts.?idk)
+
+You CAN'T marry, but can have friendships? idk (i plan for the story to have a relatively long time frame)
+
+You CAN travel out of town to a FEW locations.
+
+I WILL attempt to make an accurate economy simulator, with each NPC perhaps representing 10 people or 50, for a 
+more accurate population size?, and then use their actions to predict the economy. 
+Yes, NPCs must also have needs.
+
+
+
+Graphics: As of now, simple 2d. I might consider isometric or even 3d in the future (prob not) if I eventually 
+gather the skills.
+

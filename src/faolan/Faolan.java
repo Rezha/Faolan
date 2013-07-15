@@ -3,6 +3,7 @@ package faolan;
 import javax.swing.JFrame;
 
 import faolan.graphics.Screen;
+import faolan.io.Texture;
 
 public class Faolan {
 	
@@ -23,6 +24,8 @@ public class Faolan {
 		_frame.pack();
 		_frame.setLocationRelativeTo(null);
 		_frame.setVisible(true);
+		
+		_screen.run();
 	}
 	
 	public void setScreen(Screen screen){
@@ -31,6 +34,7 @@ public class Faolan {
 	}
 	
 	public static void main(String[] args){
+		Texture.load();
 		Faolan game = new Faolan();
 		game.setup();
 	}

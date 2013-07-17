@@ -2,7 +2,9 @@ package faolan;
 
 import javax.swing.JFrame;
 
+import faolan.entities.Player;
 import faolan.graphics.Screen;
+import faolan.io.Sprite;
 import faolan.io.Texture;
 
 public class Faolan {
@@ -17,6 +19,7 @@ public class Faolan {
 	
 	public void setup(){
 		_screen.setup();
+		
 		
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.setResizable(false);
@@ -35,6 +38,7 @@ public class Faolan {
 	
 	public static void main(String[] args){
 		Texture.load();
+		Sprite.load();
 		Faolan game = new Faolan();
 		game.setup();
 	}

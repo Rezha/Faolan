@@ -2,6 +2,7 @@ package faolan.graphics;
 
 import javax.swing.event.MouseInputListener;
 
+import faolan.entities.Player;
 import faolan.land.Area;
 
 import java.awt.Canvas;
@@ -21,15 +22,19 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 	private static final long serialVersionUID = -7452150000807143969L;
 
 	private Area _area;
+	private Player _player;
 	private int _xoffset, _yoffset, _xoffsetv, _yoffsetv;
-	private boolean _running;
+	private boolean _running, _up, _down, _right, _left;
 	private long _prevTime;
+	
 
 	public Screen() {
 		_area = new Area();
 		_xoffset = _yoffset = 0;
-		_running = false;
+		_running = _up = _down = _left = _right = false;
 		_prevTime = System.currentTimeMillis();
+		_player = new Player();
+
 	}
 
 	public void setup() {
@@ -52,15 +57,34 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 		}
 	}
 
-	public void update() {
+	public void update() { // YOU SHOULD UPDATE PLAYER POS. ETC HERE!!
 		_prevTime = System.currentTimeMillis();
+		if (_up){
+			_yoffsetv = 2;
+			_player.moveUp();
+		} else if (_down) {
+			_yoffsetv = -2;
+			_player.moveDown();
+		} else if (_left) {
+			_xoffsetv = 2;
+			_player.moveLeft();
+		} else if (_right) {
+			_xoffsetv = -2;
+			_player.moveRight();
+		} else if (_player.isOnGrid())
+			_player.stopMoving();
 		_xoffset += _xoffsetv;
 		_yoffset += _yoffsetv;
+		
+		_xoffsetv = _yoffsetv = 0;
+		
+		_player.update();
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		_area.draw(g2, _xoffset, _yoffset);
+		_player.draw(g2, _xoffset, _yoffset, 0, 0 );
 	}
 
 	public void shutdown() {
@@ -120,18 +144,17 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 		// TODO Auto-generated method stub
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_W) {
-			_yoffsetv = -2;
+			_up = true;
 		}
 		if (key == KeyEvent.VK_A) {
-			_xoffsetv = -2;
+			_left = true;
 		}
 		if (key == KeyEvent.VK_S) {
-			_yoffsetv = 2;
+			_down = true;
 		}
 		if (key == KeyEvent.VK_D) {
-			_xoffsetv = 2;
+			_right = true;
 		}
-		System.out.println("x" + _xoffset + "y" + _yoffset);
 	}
 
 	@Override
@@ -139,16 +162,16 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 		// TODO Auto-generated method stub
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_W) {
-			_yoffsetv = 0;
+			_up = false;
 		}
 		if (key == KeyEvent.VK_A) {
-			_xoffsetv = 0;
+			_left = false;
 		}
 		if (key == KeyEvent.VK_S) {
-			_yoffsetv = 0;
+			_down = false;
 		}
 		if (key == KeyEvent.VK_D) {
-			_xoffsetv = 0;
+			_right = false;
 		}
 	}
 

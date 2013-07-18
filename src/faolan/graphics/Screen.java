@@ -60,32 +60,36 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 	public void update() { // YOU SHOULD UPDATE PLAYER POS. ETC HERE!!
 		_prevTime = System.currentTimeMillis();
 		_isAligned = _player.isOnGrid();
-		boolean canUp = ;
-		boolean canDown = ;
-		boolean canLeft = ;
-		boolean canRight = ;
-		
-		
-		
-		if (_up) {
+		boolean canUp = _area.getTile(_player.getXGridCor(),
+				_player.getYGridCor() - 1).getCanWalk();
+		boolean canDown = _area.getTile(_player.getXGridCor(),
+				_player.getYGridCor() + 1).getCanWalk();
+		boolean canLeft = _area.getTile(_player.getXGridCor() - 1,
+				_player.getYGridCor()).getCanWalk();
+		boolean canRight = _area.getTile(_player.getXGridCor() + 1,
+				_player.getYGridCor()).getCanWalk();
+		System.out.println(_up);
+
+		if (_up && canUp) {
 			if (_isAligned) {
 				_yoffsetv = 2;
 				_xoffsetv = 0;
 			}
+
 			_player.moveUp();
-		} else if (_down) {
+		} else if (_down && canDown) {
 			if (_isAligned) {
 				_yoffsetv = -2;
 				_xoffsetv = 0;
 			}
 			_player.moveDown();
-		} else if (_left) {
+		} else if (_left && canLeft) {
 			if (_isAligned) {
 				_xoffsetv = 2;
 				_yoffsetv = 0;
 			}
 			_player.moveLeft();
-		} else if (_right) {
+		} else if (_right && canRight) {
 			if (_isAligned) {
 				_xoffsetv = -2;
 				_yoffsetv = 0;
@@ -97,6 +101,26 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 			_xoffsetv = 0;
 			_yoffsetv = 0;
 		}
+		if (_isAligned) {
+			if (((_up && !canUp) || (_down && !canDown)) && !_left && !_right
+					&& !(_up && _down)) {
+				_yoffsetv = 0;
+				_xoffsetv = 0;
+				if (_up)
+					_up = false;
+				if (_down)
+					_down = false;
+			}
+			if (((_left && !canLeft) || (_right && !canRight)) && !_up
+					&& !_down && !(_left && _right)) {
+				_xoffsetv = 0;
+				_yoffsetv = 0;
+				if (_left)
+					_left = false;
+				if (_right)
+					_right = false;
+			}
+		}
 		_player.update();
 		_xoffset += _xoffsetv;
 		_yoffset += _yoffsetv;
@@ -105,7 +129,8 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		_area.draw(g2, _xoffset, _yoffset, -_xoffset / 64 , -_xoffset / 64 + 17, -_yoffset / 64 , -_yoffset / 64 + 13);
+		_area.draw(g2, _xoffset, _yoffset, -_xoffset / 64, -_xoffset / 64 + 17,
+				-_yoffset / 64, -_yoffset / 64 + 13);
 		_player.draw(g2, _xoffset, _yoffset, 0, 0);
 	}
 

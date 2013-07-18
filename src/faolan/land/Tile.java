@@ -8,7 +8,7 @@ public class Tile {
 	
 	private String _key;
 	private boolean _display;
-	private boolean _walk;
+	private boolean _canWalk;
 	private int _texturex;
 	private int _texturey;
 	
@@ -19,6 +19,7 @@ public class Tile {
 		_key = key;
 		_texturex = texturex;
 		_texturey = texturey;
+		_canWalk = true;
 	}
 	
 	public void draw(Graphics2D g2, int xGridCor, int yGridCor, int xoffset, int yoffset){
@@ -31,6 +32,13 @@ public class Tile {
 		
 	}
 	
+	public void setCanWalk(boolean walk){
+		_canWalk = walk;
+	}
+	
+	public boolean getCanWalk(){
+		return _canWalk;
+	}
 	public void update(){
 		
 	}

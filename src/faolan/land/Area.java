@@ -16,8 +16,14 @@ public class Area{
 		for(int y = 0; y < 100; y++) {
 			for(int x = 0; x < 100; x++) {
 				_tiles[x][y] = new Tile("Grass1A",0,0);
+				if (y == 0 || y == 99 || x == 0 || x == 99)
+					_tiles[x][y].setCanWalk(false);
 			}
 		}
+	}
+	
+	public Tile getTile(int x, int y){
+		return _tiles[x][y];
 	}
 	
 	public void draw(Graphics2D g2, int xoffset, int yoffset, int startx, int maxx, int starty, int maxy){

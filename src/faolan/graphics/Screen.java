@@ -25,8 +25,8 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 	private Player _player;
 	private int _xoffset, _yoffset, _xoffsetv, _yoffsetv;
 	private boolean _running, _up, _down, _right, _left;
+	private boolean _isAligned;
 	private long _prevTime;
-	
 
 	public Screen() {
 		_area = new Area();
@@ -50,7 +50,7 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 	public void run() {
 		_running = true;
 		while (_running) {
-			if (System.currentTimeMillis() - _prevTime > (50/3)) {
+			if (System.currentTimeMillis() - _prevTime > (50 / 3)) {
 				update();
 				repaint();
 			}
@@ -59,32 +59,54 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 
 	public void update() { // YOU SHOULD UPDATE PLAYER POS. ETC HERE!!
 		_prevTime = System.currentTimeMillis();
-		if (_up){
-			_yoffsetv = 2;
+		_isAligned = _player.isOnGrid();
+		boolean canUp = ;
+		boolean canDown = ;
+		boolean canLeft = ;
+		boolean canRight = ;
+		
+		
+		
+		if (_up) {
+			if (_isAligned) {
+				_yoffsetv = 2;
+				_xoffsetv = 0;
+			}
 			_player.moveUp();
 		} else if (_down) {
-			_yoffsetv = -2;
+			if (_isAligned) {
+				_yoffsetv = -2;
+				_xoffsetv = 0;
+			}
 			_player.moveDown();
 		} else if (_left) {
-			_xoffsetv = 2;
+			if (_isAligned) {
+				_xoffsetv = 2;
+				_yoffsetv = 0;
+			}
 			_player.moveLeft();
 		} else if (_right) {
-			_xoffsetv = -2;
+			if (_isAligned) {
+				_xoffsetv = -2;
+				_yoffsetv = 0;
+			}
 			_player.moveRight();
 		} else if (_player.isOnGrid())
 			_player.stopMoving();
+		if (_player.isOnGrid() && !_up && !_down && !_left && !_right) {
+			_xoffsetv = 0;
+			_yoffsetv = 0;
+		}
+		_player.update();
 		_xoffset += _xoffsetv;
 		_yoffset += _yoffsetv;
-		
-		_xoffsetv = _yoffsetv = 0;
-		
-		_player.update();
+
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		_area.draw(g2, _xoffset, _yoffset);
-		_player.draw(g2, _xoffset, _yoffset, 0, 0 );
+		_area.draw(g2, _xoffset, _yoffset, -_xoffset / 64 , -_xoffset / 64 + 17, -_yoffset / 64 , -_yoffset / 64 + 13);
+		_player.draw(g2, _xoffset, _yoffset, 0, 0);
 	}
 
 	public void shutdown() {

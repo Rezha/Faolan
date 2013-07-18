@@ -103,6 +103,14 @@ public class Player extends Character {
 				_frame * 16 + 16, null);
 	}
 
+	public int getXGridCor(){
+		return _xGridCor;
+	}
+	
+	public int getYGridCor(){
+		return _yGridCor;
+	}
+	
 	@Override
 	void speak(String line) {
 		// TODO Auto-generated method stub

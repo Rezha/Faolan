@@ -22,6 +22,7 @@ public class Tile {
 	}
 	
 	public void draw(Graphics2D g2, int xGridCor, int yGridCor, int xoffset, int yoffset){
+		
 		g2.drawImage(Texture.getTextures(_key), 
 				xoffset + xGridCor * 64, yoffset + yGridCor * 64, 
 				xoffset + xGridCor * 64 + 64, yoffset + yGridCor * 64 + 64, 

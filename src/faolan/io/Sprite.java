@@ -15,6 +15,8 @@ public class Sprite {
 		try {
 			_sprites.put("Faolan",
 					ImageIO.read(new File("res/faolan.png")));
+			_sprites.put("Char1", 
+					ImageIO.read(new File("res/char1.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

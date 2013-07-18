@@ -13,7 +13,7 @@ public class Player extends Character {
 	private boolean _framedir;
 
 	public Player() {
-		_direction = 0;
+		_direction = 1;
 		_frame = 1;
 		_xcor = 0;
 		_ycor = 0;
@@ -81,6 +81,7 @@ public class Player extends Character {
 		if (_isOnGrid) {
 			_up = true;
 			_down = _left = _right = false;
+			_direction = 0;
 		}
 	}
 
@@ -88,6 +89,7 @@ public class Player extends Character {
 		if (_isOnGrid) {
 			_down = true;
 			_up = _left = _right = false;
+			_direction = 2;
 		}
 	}
 
@@ -95,6 +97,7 @@ public class Player extends Character {
 		if (_isOnGrid) {
 			_left = true;
 			_up = _down = _right = false;
+			_direction = 3;
 		}
 	}
 
@@ -102,6 +105,7 @@ public class Player extends Character {
 		if (_isOnGrid) {
 			_right = true;
 			_up = _down = _left = false;
+			_direction = 1;
 		}
 	}
 
@@ -114,9 +118,9 @@ public class Player extends Character {
 		_xcor = xoffset + _xgridoffset + _xGridCor * 64; // these two lines
 		_ycor = yoffset + _ygridoffset + _yGridCor * 64; // update player?
 
-		g2.drawImage(Sprite.getTextures("Faolan"), _xcor, _ycor, _xcor + 64,
-				_ycor + 64, _frame * 16, _direction * 16, _frame * 16 + 16,
-				_direction * 16 + 16, null);
+		g2.drawImage(Sprite.getTextures("Char1"), _xcor, _ycor, _xcor + 64,
+				_ycor + 96, _frame * 24, _direction * 32, _frame * 24 + 24,
+				_direction * 32 + 32, null);
 	}
 
 	public int getXGridCor(){

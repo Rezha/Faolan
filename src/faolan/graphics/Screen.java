@@ -68,7 +68,6 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 				_player.getYGridCor()).getCanWalk();
 		boolean canRight = _area.getTile(_player.getXGridCor() + 1,
 				_player.getYGridCor()).getCanWalk();
-		System.out.println(_up);
 
 		if (_up && canUp) {
 			if (_isAligned) {
@@ -106,19 +105,11 @@ public class Screen extends Canvas implements KeyListener, MouseInputListener,
 					&& !(_up && _down)) {
 				_yoffsetv = 0;
 				_xoffsetv = 0;
-				if (_up)
-					_up = false;
-				if (_down)
-					_down = false;
 			}
 			if (((_left && !canLeft) || (_right && !canRight)) && !_up
 					&& !_down && !(_left && _right)) {
 				_xoffsetv = 0;
 				_yoffsetv = 0;
-				if (_left)
-					_left = false;
-				if (_right)
-					_right = false;
 			}
 		}
 		_player.update();

@@ -15,8 +15,13 @@ public class Area{
 		_tiles = new Tile[100][100];
 		for(int y = 0; y < 100; y++) {
 			for(int x = 0; x < 100; x++) {
-				_tiles[x][y] = new Tile("Grass1A",0,0);
+				if (y == 2 && x == 2)
+					_tiles[x][y] = new Tile("Outside1A",4,0);
+				else
+					_tiles[x][y] = new Tile("Grass1A",0,0);
 				if (y == 0 || y == 99 || x == 0 || x == 99)
+					_tiles[x][y].setCanWalk(false);
+				if (y == 2 && x == 2)
 					_tiles[x][y].setCanWalk(false);
 			}
 		}

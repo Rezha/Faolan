@@ -10,6 +10,7 @@ public class Player extends Character {
 	private int _xcor, _ycor, _xGridCor, _yGridCor;
 	private boolean _up, _down, _left, _right;
 	private boolean _isOnGrid;
+	private boolean _framedir;
 
 	public Player() {
 		_direction = 0;
@@ -22,6 +23,7 @@ public class Player extends Character {
 		_ygridoffset = 0;
 		_isOnGrid = true; // next step: make the player only move by 1 grid
 							// square.
+		_framedir = true;
 	}
 
 	@Override
@@ -36,6 +38,20 @@ public class Player extends Character {
 			_xgridoffset += 2;
 
 		_isOnGrid = false;
+		
+		if (Math.abs(_xgridoffset) % 32 == 2 || Math.abs(_ygridoffset % 32) == 2){
+			if (_framedir && _frame < 2)
+				_frame++;
+			else if (_frame > 0){
+				_framedir = false;
+				_frame--;
+			} else {
+				_framedir = true;
+				_frame++;
+			}
+		}
+		System.out.println(_frame);
+				
 
 		if (_xgridoffset >= 64 || _xgridoffset <= -64) {
 			if (_xgridoffset >= 0)
@@ -99,8 +115,8 @@ public class Player extends Character {
 		_ycor = yoffset + _ygridoffset + _yGridCor * 64; // update player?
 
 		g2.drawImage(Sprite.getTextures("Faolan"), _xcor, _ycor, _xcor + 64,
-				_ycor + 64, _direction * 16, _frame * 16, _direction * 16 + 16,
-				_frame * 16 + 16, null);
+				_ycor + 64, _frame * 16, _direction * 16, _frame * 16 + 16,
+				_direction * 16 + 16, null);
 	}
 
 	public int getXGridCor(){

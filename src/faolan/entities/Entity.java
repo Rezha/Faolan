@@ -8,7 +8,7 @@ public abstract class Entity {
 	protected boolean _animated;
 	//image file
 	
-	abstract void tick();
+	abstract void update();
 	
 	public void draw(Graphics2D g2d){
 		//g2d.paint(whatever);

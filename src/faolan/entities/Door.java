@@ -7,7 +7,7 @@ public class Door extends Entity {
 		
 	}
 
-	void tick() {
+	void update() {
 		// TODO Auto-generated method stub
 		
 	}

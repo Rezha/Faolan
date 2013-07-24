@@ -11,8 +11,13 @@
   - spend time on this
 - ... find / make textures...
   - remember, it's okay if it's pixely, cuz who cares and you can get better textures later
-
-- somehow find sounds. Perhaps just take from a ftp game already made for now?
+- Sound resources: 
+      "Retro chip sound fx" http://www.drpetter.se/project_sfxr.html
+      "Free sound directory 1" http://www.freesound.org/
+      "Free sound directory 2" http://soundbible.com/
+-Music Resources:
+      "Free music from Musician Kevin Leod in various genre "http://incompetech.com/m/c/royalty-free
+      "Wide variety of game music, free and $$$" http://www.indiegamemusic.com/
 
 - plan to keep this in java. If it gets big in java already, transitioning to C++ or python later is 
 probably not going to be feasible. 
@@ -49,4 +54,5 @@ Yes, NPCs must also have needs.
 
 Graphics: As of now, simple 2d. I might consider isometric or even 3d in the future (prob not) if I eventually 
 gather the skills.
+(3D may become a possibility in another year after rezha_blue is competent in 3D animation)
 
